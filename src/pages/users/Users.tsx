@@ -59,6 +59,14 @@ const columns = [
     dataIndex: "role",
     key: "role",
   },
+  {
+    title: "Restaurant",
+    dataIndex: "tenant",
+    key: "tenant",
+    render: (_text: string, record: User) => {
+      return <div>{record.tenant?.name}</div>;
+    },
+  },
 ];
 
 const Users = () => {
@@ -192,6 +200,9 @@ const Users = () => {
                   currentPage: page,
                 };
               });
+            },
+            showTotal: (total: number, range: number[]) => {
+              return `Showing ${range[0]}-${range[1]} of ${total} items`;
             },
           }}
         />
